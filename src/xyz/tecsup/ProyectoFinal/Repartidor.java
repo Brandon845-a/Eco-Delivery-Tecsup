@@ -5,7 +5,7 @@ public class Repartidor {
     private String nombre;
     private String dni;
     private String telefono;
-    private String estadoReclutamiento; // "POSTULANTE", "APROBADO", "RECHAZADO"
+    private String estadoReclutamiento; // 
     private Vehiculo vehiculo; // Asociacion con el vehiculo ecologico
 
     public Repartidor() {}
@@ -14,7 +14,7 @@ public class Repartidor {
         this.nombre = nombre;
         this.dni = dni;
         this.telefono = telefono;
-        this.estadoReclutamiento = "POSTULANTE"; // Estado por defecto al reclutar
+        this.estadoReclutamiento = "POSTULANTE"; // por defecto
         this.vehiculo = vehiculo;
     }
 

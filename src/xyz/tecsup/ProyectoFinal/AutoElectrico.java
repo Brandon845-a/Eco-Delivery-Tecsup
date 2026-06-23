@@ -15,7 +15,7 @@ public class AutoElectrico extends Vehiculo {
 
     @Override
     public double calcularCo2Evitado(double distanciaKm) {
-        // Un auto convencional mediano emite aprox 150g de CO2 por Km
+    	// en promedio un carro consume emite como 150g de CO2 por km
         return distanciaKm * 150.0;
     }
 
