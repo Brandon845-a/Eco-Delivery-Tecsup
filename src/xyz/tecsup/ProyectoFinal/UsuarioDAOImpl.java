@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 public class UsuarioDAOImpl implements UsuarioDAO {
 
@@ -57,4 +58,34 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         }
         return null; 
     }
+
+	@Override
+	public List<Usuario> listar() {
+	
+	    List<Usuario> lista = new java.util.ArrayList<>(); 
+	    String sql = "SELECT id_usuario, username, password_hash, nombres, apellidos, rol, fecha_registro FROM usuarios";
+	    
+	    try (java.sql.Connection con = ConexionDB.getConexion();
+	         java.sql.PreparedStatement ps = con.prepareStatement(sql);
+	         java.sql.ResultSet rs = ps.executeQuery()) {
+	        
+	        while (rs.next()) {
+	            Usuario u = new Usuario();
+	            u.setIdUsuario(rs.getInt("id_usuario"));
+	            u.setUsername(rs.getString("username"));
+	            u.setPasswordHash(rs.getString("password_hash"));
+	            u.setNombres(rs.getString("nombres"));
+	            u.setApellidos(rs.getString("apellidos"));
+	            u.setRol(rs.getString("rol"));
+	            u.setFechaRegistro(rs.getTimestamp("fecha_registro"));
+	            
+	            lista.add(u);
+	        }
+	    } catch (Exception e) {
+	        System.err.println("===> ERROR CRUCIAL EN EL DAO: " + e.getMessage());
+	        e.printStackTrace();
+	    }
+	    
+	    return lista; 
+	}
 }

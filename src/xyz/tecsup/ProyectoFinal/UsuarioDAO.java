@@ -3,4 +3,5 @@ import java.util.List;
 public interface UsuarioDAO {
 	void registrarUsuario(Usuario usuario);
 	Usuario buscarPorUsername(String username);
+	List<Usuario> listar();
 }
